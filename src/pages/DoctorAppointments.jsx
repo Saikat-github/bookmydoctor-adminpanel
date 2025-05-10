@@ -49,7 +49,6 @@ const DoctorAppointments = () => {
         params: { date: data.date, docId },
         withCredentials: true
       });
-      console.log(res.data);
       if (res.data.success) {
         setAppointments(res.data.appointments);
       } else {

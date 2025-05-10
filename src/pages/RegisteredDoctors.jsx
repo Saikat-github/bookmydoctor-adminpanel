@@ -29,7 +29,6 @@ export default function RegisteredDoctors() {
         {
           withCredentials: true
         });
-      console.log(data);
       if (data.success) {
         toast.success(data.message);
         setIsOpen(false);

@@ -26,7 +26,6 @@ const SingleProfile = () => {
           withCredentials: true,
           params: { doctorId: id }
         })
-        console.log(response.data);
         if (response.data.success) {
           setDoctorData(response.data.profileData);
         } else {
