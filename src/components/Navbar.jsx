@@ -1,4 +1,4 @@
-import { LogOut, LogIn, BarChart2, Users, FileText, LayoutDashboard, UserCheck, TrendingUp } from "lucide-react";
+import { LogOut, LogIn, BarChart2, Users, FileText, LayoutDashboard, UserCheck, TrendingUp, Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Logout from "./Logout";
@@ -51,20 +51,7 @@ export default function AdminNavbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-slate-700 focus:outline-none hover:cursor-pointer"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-            />
-          </svg>
+          {isMobileMenuOpen ? <X className="w-6" /> : <Menu className="w-6" />}
         </button>
       </div>
 
@@ -76,7 +63,7 @@ export default function AdminNavbar() {
               key={name}
               to={path}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`mr-auto flex items-center gap-2 md:gap-3 text-sm transition hover:border-indigo-600 pb-2 border-b-2 ${location.pathname === path ? "border-indigo-600" : "border-transparent"
+              className={`w-full mr-auto flex items-center gap-2 md:gap-3 text-sm transition hover:border-indigo-600 pb-2 border-b-2 ${location.pathname === path ? "border-indigo-600" : "border-transparent"
                 }`}
             >
               {icon}

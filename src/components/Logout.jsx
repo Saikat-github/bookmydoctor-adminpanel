@@ -41,7 +41,7 @@ const Logout = ({setIsMobileMenuOpen}) => {
                     ?
                     <button 
                     onClick={handleLogout}
-                    className="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-600 cursor-pointer">
+                    className="w-full flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-600 cursor-pointer">
                         <LogOut className='w-4' />
                         {loader ? <Loader className="animate-spin w-4" /> : "Logout"}
                     </button>
@@ -53,7 +53,7 @@ const Logout = ({setIsMobileMenuOpen}) => {
                             }
                             navigate("/login")
                         }}
-                        className="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-600 cursor-pointer">
+                        className="w-full flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-600 cursor-pointer">
                         <LogIn className='w-4' />
                         Login
                     </button>
