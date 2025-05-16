@@ -11,27 +11,6 @@ import { Loader2 } from "lucide-react";
 
 const performanceFilters = ["Best Performing", "Worst Performing"];
 
-const dummyDoctors = [
-  {
-    id: 1,
-    name: "Dr. Ayesha Khan",
-    specialization: "Cardiologist",
-    appointments: 92,
-  },
-  {
-    id: 2,
-    name: "Dr. Ravi Mehta",
-    specialization: "Dermatologist",
-    appointments: 12,
-  },
-  {
-    id: 3,
-    name: "Dr. Sneha Patel",
-    specialization: "Neurologist",
-    appointments: 58,
-  },
-];
-
 export default function DoctorPerformancePage() {
   const { dateFilter, setDateFilter, currentAdmin, backendUrl, accounts, setAccounts } = useContext(AdminContext);
   const [selectedPerformance, setSelectedPerformance] = useState("Best Performing");

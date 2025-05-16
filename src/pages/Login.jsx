@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Login as LoginComponent } from '../components'
-import { AdminContext } from '../context/AdminContext'
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {toast} from 'react-toastify'
 
 const Login = () => {
-    const { currentAdmin } = useContext(AdminContext);
-    const navigate = useNavigate()
     const location = useLocation();
     useEffect(() => {
         const params = new URLSearchParams(location.search);

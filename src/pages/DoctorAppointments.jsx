@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useMemo } from 'react';
 import { AdminContext } from '../context/AdminContext';
 import { useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -6,7 +6,8 @@ import { CheckCircle, XCircle, CalendarDays, User, Stethoscope } from "lucide-re
 import { toast } from 'react-toastify'
 import { SingleAppointment } from '../components';
 import axios from 'axios';
-
+import { formatTime } from '../services/utilFunctions';
+  
 
 
 const DoctorAppointments = () => {
@@ -17,28 +18,23 @@ const DoctorAppointments = () => {
   const { doctors, backendUrl } = useContext(AdminContext);
   const { register, handleSubmit } = useForm();
 
-  const [selectedDoc] = doctors.filter((doc) => doc._id === docId);
+
+  const selectedDoc = useMemo(() => {
+    return doctors.find(doc => doc._id === docId);
+  }, [doctors, docId]);
 
 
-  const formatTime = (time) => {
-    if (!time) return '';
-    return new Date(`2025-02-09T${time}`).toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true
-    });
-  };
 
-
-  const getAvailableDays = () => {
-    if (!selectedDoc.availability?.workingDays) return [];
-    return Object.entries(selectedDoc.availability?.workingDays).map(([day, slots]) => ({
+  const getAvailableDays = useMemo(() => {
+    if (!selectedDoc?.availability?.workingDays) return [];
+    return Object.entries(selectedDoc.availability.workingDays).map(([day, slots]) => ({
       day,
       slots: Array.isArray(slots) ? slots.map(slot =>
         `${formatTime(slot.start)} - ${formatTime(slot.end)}`
       ) : []
     }));
-  };
+  }, [selectedDoc]);
+
 
 
 

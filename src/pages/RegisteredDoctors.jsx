@@ -61,7 +61,7 @@ export default function RegisteredDoctors() {
       })
       console.log(res.data);
       if (res.data.success) {
-        setAccounts(cursor ? [...accounts, ...res.data.docAccounts] : res.data.docAccounts)
+        setAccounts(prev => cursor ? [...prev, ...res.data.docAccounts] : res.data.docAccounts)
         setCursor(res.data.nextCursor);
         setHasNextPage(res.data.hasNextPage);
       } else {
@@ -82,7 +82,7 @@ export default function RegisteredDoctors() {
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [search, dateFilter, currentAdmin]);
+  }, [search, dateFilter]);
 
 
 
@@ -180,7 +180,7 @@ export default function RegisteredDoctors() {
         <button
           disabled={loader}
           className="bg-indigo-700 mx-auto text-white px-4 py-2 rounded-lg mt-4 flex items-center gap-2 cursor-pointer"
-          onClick={() => getAllProfilesData()}
+          onClick={() => getAllAccountsData()}
         >
           {loader ? "Loading..." : "Load More"}
         </button>

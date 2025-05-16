@@ -80,6 +80,14 @@ const getStartEndDate = (filter) => {
 
 
 
+  const formatTime = (time) => {
+    if (!time) return '';
+    return new Date(`2025-02-09T${time}`).toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
 
-export { convertDate, convertToJustDate, getStartEndDate };
+export { convertDate, convertToJustDate, getStartEndDate, formatTime };
